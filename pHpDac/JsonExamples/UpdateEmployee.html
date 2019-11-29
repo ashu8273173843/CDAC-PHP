@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Updating Record</title>
+	<link rel="stylesheet" type="text/css" href="../Content/mainStyle.css">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
+		var url = "http://localhost:8080/phpDac/dbRestService.php";
+		function fillRecords(){
+			var id = localStorage.getItem("updateID");
+			if(id == undefined){
+				throw "Details are not selected";
+				return;
+			}
+			var tempUrl = url + "?id=" + id;
+			$.get(tempUrl, function(data){
+				var emp = JSON.parse(data);
+				$("#empid").val(emp.empID);
+				$("#empname").val(emp.empName);
+				$("#empaddr").val(emp.empAddress);
+				$("#empsal").val(emp.empSalary);
+			})
+		}
+
+		function updateRec(){
+			var emp ={};
+			emp.empID = $("#empid").val();
+			emp.empName = $("#empname").val();
+			emp.empAddress = $("#empaddr").val();
+			emp.empSalary = $("#empsal").val();
+			//get the values entered by the user...
+			$.ajax({
+				'url' : url,
+				'type': 'PUT',
+				'data' : JSON.stringify(emp),
+				'success' : function(data){
+					alert(data);
+				}
+			});
+			//ajax Operation to put the data into the REST SErvice....
+
+		}
+		$(document).ready(()=>{
+			try{
+				fillRecords();
+			}catch(e){
+				alert(e);
+				return;
+			}
+			$("button").click(updateRec)
+		});
+	</script>
+</head>
+<body>
+	<h1>Updating Employee Records</h1>
+	<div>
+		<h1>Update Employee</h1>
+		<p>
+			<input type="number" required placeholder="Enter the ID" id="empid">
+		</p>
+		<p>
+			<input type="text" required placeholder="Enter the name" id="empname" minlength="3" maxlength="15">
+		</p>
+		<p>
+			<input type="text" required placeholder="Enter the Address" id="empaddr" minlength="5" maxlength="100">
+		</p>
+		<p>
+			<input type="number" required placeholder="Enter the Salary" id="empsal">
+		</p>
+		<p>
+			<button id="btnSave" type="submit">Update Details</button>
+		</p>
+	</div>
+	<p>
+		<a href="RestClient.html">Back</a>
+	</p>
+</body>
+</html>

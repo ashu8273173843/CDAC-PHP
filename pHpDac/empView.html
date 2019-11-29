@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Employee Creation Page</title>
+	<style>
+		div{
+			border: 2px solid lightgreen;
+			padding: 5px;
+			margin: 5px;
+			border-radius: 5px;
+		}
+		h1, p{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h1>Employee Registration Form</h1>
+	<hr/>
+	<div>
+		<form action="empProcess.php" method="POST">
+		<h1>Register a new Employee</h1>
+		<p>
+			<input type="number" required placeholder="Enter the ID" name="empid">
+		</p>
+		<p>
+			<input type="text" required placeholder="Enter the name" name="empname" minlength="3" maxlength="15">
+		</p>
+		<p>
+			<input type="text" required placeholder="Enter the Address" name="empaddress" minlength="5" maxlength="100">
+		</p>
+		<p>
+			<input type="number" required placeholder="Enter the Salary" name="empsal">
+		</p>
+		<p>
+			<button type="submit">Show Details</button>
+		</p>
+		</form>
+	</div>
+</body>
+</html>

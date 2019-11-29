@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Insertion Example</title>
+	<link rel="stylesheet" type="text/css" href="../Content/mainStyle.css">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
+		var url = 'http://localhost:8080/phpDac/dbRestService.php';
+		function insertRec(){
+			//take the inputs...
+			var emp = {};//JS object...
+			emp.empID = $("#empid").val();
+			emp.empName = $("#empname").val();
+			emp.empAddress = $("#empaddr").val();
+			emp.empSalary = $("#empsal").val();//get the value by id....
+			//call the ajax function to post data into the service...
+			$.post(url, JSON.stringify(emp), (data)=>{
+				alert(data);
+			});//emp is the data that U R posting to the URL Request...
+		}
+		$(document).ready(()=>{
+			$("button").click(insertRec);	
+		});
+	</script>
+</head>
+<body>
+	<h1>Adding new Record</h1>
+	<div class="panel">
+		<input placeholder="Enter the ID" id="empid"/>
+		<input placeholder="Enter the Name" id="empname"/>
+		<input placeholder="Enter the Address" id="empaddr"/>
+		<input placeholder="Enter the Salary" id="empsal"/>
+		<p><button>Save changes</button></p>
+	</div>
+	<p>
+	<a href="RestClient.html">Back</a>
+	</p>
+</body>
+</html>

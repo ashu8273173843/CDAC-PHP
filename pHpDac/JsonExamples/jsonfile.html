@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title></title>
+		<script type="text/javascript">
+			var data = {
+				"Cppbooks" : [
+				{
+					"title" : "C++ Complete Reference",
+					"price" : 450,
+					"author":"Herbert Schildt"
+				},{
+					"title": "Let us C++",
+					"price": 550,
+					"author":"Yeshwant Kanitkar"
+				},{
+					"title":"C++ Programming",
+					"price":650,
+					"author":"Robert Lafore"
+				}
+				]
+			}
+
+			var emp = {
+				"id":123,
+				"name":"Phaniraj",
+				"address":"Bangalore",
+				"salary":56000
+			}
+			window.addEventListener("load", function(){
+				var books = data.Cppbooks;
+				books.forEach(function(v, i){
+					var row = '<tr><td>' + v.title + '</td></tr>'
+					document.getElementById("tblBooks").innerHTML += row; 
+				})
+				var div = document.getElementById("empDetails");
+				div.innerHTML +="<h1>The Name: " + emp.name +'</h1';
+				div.innerHTML +="<p>The Address: " + emp.address +'</p';
+				div.innerHTML +="<p>The Salary: " + emp.salary +'</p';
+			})
+		</script>
+	</head>
+	<body>
+		<table border="1" id="tblBooks">
+			
+		</table>
+		<div id="empDetails">
+		</div>
+	</body>
+</html>	

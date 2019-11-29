@@ -1,0 +1,8 @@
+"employee" : {
+	"id":123,
+	"name":"Phaniraj",
+	"address":"Bangalore",
+	"salary":56000
+}//This is a JS object called employee which has properties like id, name, address, salary... 
+
+

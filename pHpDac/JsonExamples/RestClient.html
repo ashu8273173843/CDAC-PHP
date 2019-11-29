@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rest Client in jQuery</title>
+	<link rel="stylesheet" type="text/css" href="../Content/mainStyle.css">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
+		var url ="http://localhost:8080/phpDac/dbRestService.php";
+		
+		function populate() {
+			$("div:gt(0)").hide(2000);
+			$("div:eq(1)").show(2000);
+			$("table").find("tr:gt(0)").remove();
+			$.get(url, (data)=>{
+				//data is the result of the query..
+					var objects = JSON.parse(data);
+				$.each(objects, (i, v)=>{
+					var row = '<tr><td>' + v.empID	+'</td><td>';
+					row += v.empName +'</td><td>';
+					row += v.empAddress +'</td><td>';
+					row += v.empSalary +'</td><td>';
+					row += '<a class="edit" href="UpdateEmployee?id="' + v.empID + '>Edit</a></td></tr>';
+					$("table").append(row);
+					$(".edit").click(function(){
+						var id = $(this).parent().siblings("td:eq(0)").text();
+						localStorage.setItem("updateID", id);	
+					})
+				})
+			})
+		}
+		$(document).ready(()=>{
+			$("div:gt(0)").hide(2000);
+			$("a:eq(0)").click(populate);
+		});
+	</script>
+</head>
+<body>
+	<h1>Employee Info System</h1>
+	<div>
+		<a href="#">All Employees</a>
+		<a href="RestInsertion.html">Add Employee</a>
+		<a href="#">Update Employee</a>
+	</div>
+	<div>
+	<table border="1">
+		<tr>
+			<th>Employee ID</th>
+			<th>Employee Name</th>
+			<th>Employee Address</th>
+			<th>Employee Salary</th>
+			<th>Options</th>
+		</tr>
+	</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+Student marks software:
+Student Registration->StudentId, Name, Address, Phone, AcademicYear.
+Marks Entering->MarksTable: EntryID, StudentId, 1stLan, 2ndLang, 3rdLang, Math, Science, Social.
+2 Php Pages: Student Registration, Marks Entry.
+
+Nodejs:
+Rest Service: Get based on ID....
+
+Angular App: Consumes the Rest and displays the data in its View.... 
